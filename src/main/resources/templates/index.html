@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="./static/tables.css">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <style>
+        body {
+            font-family: "Press Start 2P", serif;
+        }
+    </style>
+    <title>Комнаты</title>
+</head>
+<body>
+<div id="container">
+    <div id="menu">
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/rooms">Комнаты</a></li>
+            <li><a href="/floors">Этажи</a></li>
+            <li><a href="/referenceRooms">Прайс-лист</a></li>
+            <li><a href="/feedback">Отзывы</a></li>
+            <li><a href="/service_of_rooms">Сервис</a></li>
+            <li><a href="/organisations">Организации</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h1>Комнаты</h1>
+        <table class="rooms_table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th> Room capacity</th>
+                <th> Room cost</th>
+                <th> Occupation status</th>
+                <th> dummy</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bookedRoom : ${bookedRooms}">
+                <td th:text="${bookedRoom.id}"></td>
+                <td th:text="${bookedRoom.capacity}"></td>
+                <td th:text="${bookedRoom.cost}"></td>
+                <td th:text="${bookedRoom.occupation_status}"></td>
+                <td th:text="${fileData.ref_id}"></td>
+                <td>
+                    <a th:href="@{/delete/{id} (id =${fileData.getId()})}">DELETE</a>
+                    <a th:href="@{/edit/{id} (id =${fileData.getId()})}">EDIT</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+    </div>
+</div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>Добавить исполнителя</h2>
+        <form th:action="@{/room/create}" method="POST">
+            <table>
+                <tr>
+                    <td>Имя исполнителя:</td>
+                    <td><input type="text" name="fullName"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">Сохранить</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+    function openForm() {
+        document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myModal").style.display = "none";
+    }
+</script>
+</body>
+</html>
