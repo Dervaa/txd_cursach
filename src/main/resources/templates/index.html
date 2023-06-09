@@ -38,11 +38,11 @@
             </thead>
             <tbody>
             <tr th:each="bookedRoom : ${bookedRooms}">
-                <td th:text="${bookedRoom.id}"></td>
-                <td th:text="${bookedRoom.capacity}"></td>
-                <td th:text="${bookedRoom.cost}"></td>
-                <td th:text="${bookedRoom.occupation_status}"></td>
-                <td th:text="${fileData.ref_id}"></td>
+                <th th:text="${bookedRoom.id}"></th>
+                <th th:text="${bookedRoom.capacity}"></th>
+                <th th:text="${bookedRoom.cost}"></th>
+                <th th:text="${bookedRoom.occupation_status}"></th>
+                <th th:text="${fileData.ref_id}"></th>
                 <td>
                     <a th:href="@{/delete/{id} (id =${fileData.getId()})}">DELETE</a>
                     <a th:href="@{/edit/{id} (id =${fileData.getId()})}">EDIT</a>
@@ -50,12 +50,13 @@
             </tr>
             </tbody>
         </table>
-
-
-
-
-
     </div>
+</div>
+
+
+
+<!--
+
 </div>
 <div id="myModal" class="modal">
     <div class="modal-content">
@@ -84,6 +85,6 @@
     function closeForm() {
         document.getElementById("myModal").style.display = "none";
     }
-</script>
+</script>-->
 </body>
 </html>

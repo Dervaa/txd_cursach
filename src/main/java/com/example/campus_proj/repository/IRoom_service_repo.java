@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
-public interface IRoom_service_repo extends JpaRepository<Service_of_rooms, Integer> {
+public interface IRoom_service_repo extends JpaRepository<Service_of_rooms, Long> {
     void deleteService_of_roomsById(Long id);
     Service_of_rooms findService_of_roomsById(Long id);
 }
