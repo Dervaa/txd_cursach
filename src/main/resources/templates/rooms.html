@@ -30,11 +30,12 @@
         <td th:text="${bookedRoom.capacity}"></td>
         <td th:text="${bookedRoom.cost}"></td>
         <td th:text="${bookedRoom.occupation_status}"></td>
-        <td>
-          <a th:href="@{/delete/{id} (id=${bookedRoom.id})}">DELETE</a>
-          <a th:href="@{/edit/{id} (id=${bookedRoom.id})}">EDIT</a>
-        </td>
+        <td th:text="${bookedRoom.reference_room_id}"></td>
       </tr>
+      <td>
+        <a th:href="@{/delete/{id} (id=${bookedRoom.id})}">DELETE</a>
+        <a th:href="@{/edit/{id} (id=${bookedRoom.id})}">EDIT</a>
+      </td>
       </tbody>
     </table>
   </div>

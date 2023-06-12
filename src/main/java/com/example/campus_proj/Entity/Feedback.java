@@ -16,10 +16,12 @@ public class Feedback {
     @Column(columnDefinition = "BIGSERIAL", name = "feedback_id")
     @Id
     private Long id;
-    @Column(columnDefinition = "BOOLEAN", name = "feedback_type")
-    private boolean type;
+    @Column(columnDefinition = "INTEGER", name = "feedback_type")
+    private Integer type;
     @Column(columnDefinition = "INTEGER", name = "feedback_rating")
     private Integer rating;
+    @Column(columnDefinition = "TEXT", name = "feedback_text")
+    private String text;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "guest_id", referencedColumnName = "guest_id", foreignKey = @ForeignKey(name = "guest_id"))
     private Guest guest_id;

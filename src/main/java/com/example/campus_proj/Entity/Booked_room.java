@@ -2,10 +2,9 @@ package com.example.campus_proj.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,9 +23,11 @@ public class Booked_room {
     @Column(columnDefinition = "INTEGER", name = "booked_room_cost")
     private Integer cost;
     @Column(columnDefinition = "INTEGER", name = "booked_room_occupation_status")
-    private boolean occupation_status;
+    private Integer occupation_status;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "reference_room_id", referencedColumnName = "reference_room_id", foreignKey = @ForeignKey(name = "reference_room_id"))
     private Reference_room reference_room_id;
 
+/*    public static Long getId(Booked_room bookedRoom) { оно не нужно но пусть будет
+    }*/
 }

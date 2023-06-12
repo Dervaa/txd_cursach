@@ -19,9 +19,9 @@ public class Booking {
     @Id
     private Long id;
     @Column(columnDefinition = "TEXT", name = "booking_begin")
-    private String begins;
+    private String begin;
     @Column(columnDefinition = "TEXT", name = "booking_end")
-    private String ends;
+    private String end;
     @Column(columnDefinition = "INTEGER", name = "booking_bill")
     private String bill;
     @ManyToOne

@@ -5,6 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IBooked_room_repo extends JpaRepository<Booked_room, Long> {
-
-}
+public interface IBooked_room_repo extends JpaRepository<Booked_room, Long> {}
