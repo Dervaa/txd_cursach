@@ -18,8 +18,8 @@ public class Guest_Booking {
     private Long id;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "guest_guest_id", referencedColumnName = "guest_id", foreignKey = @ForeignKey(name = "guest_guest_id"))
-    private Guest guest_id;
+    private Guest guest;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "booking_booking_id", referencedColumnName = "booking_id", foreignKey = @ForeignKey(name = "booking_booking_id"))
-    private Booking booking_id;
+    private Booking booking;
 }

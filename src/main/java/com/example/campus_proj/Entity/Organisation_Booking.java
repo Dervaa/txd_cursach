@@ -17,9 +17,9 @@ public class Organisation_Booking {
     private Long id;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "organisation_id", referencedColumnName = "organisation_id", foreignKey = @ForeignKey(name = "organisation_id"))
-    private Organisation organisation_id;
+    private Organisation organisation;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "booking_booking_id", referencedColumnName = "booking_id", foreignKey = @ForeignKey(name = "booking_booking_id"))
-    private Booking booking_id;
+    private Booking booking;
 }
 
