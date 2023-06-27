@@ -27,6 +27,6 @@ public class ReferenceRoom {
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "floor_id", referencedColumnName = "floor_id", foreignKey = @ForeignKey(name = "floor_id"))
     private Floor floor;
-    @OneToMany(mappedBy = "reference_room", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "referenceRoom", cascade = CascadeType.REMOVE)
     private List<BookedRoom> bookedRooms;
 }

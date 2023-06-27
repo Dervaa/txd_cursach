@@ -21,5 +21,5 @@ public class ServiceOfRooms {
     private Integer serviceCost;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "booked_room_id", referencedColumnName = "booked_room_id", foreignKey = @ForeignKey(name = "booked_room_id"))
-    private BookedRoom BookedRoom;
+    private BookedRoom bookedRoom;
 }
