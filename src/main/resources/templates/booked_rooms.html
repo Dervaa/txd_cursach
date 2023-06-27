@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Забронированные комнаты</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <!--<link rel="stylesheet" type="text/css" href="booked_rooms.css">-->
   <style>
-    /* Добавьте стили оформления таблицы и кнопок здесь */
     @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
-
     body {
       font-family: 'Press Start 2P', cursive;
     }
@@ -56,18 +54,18 @@
     <th>Вместимость</th>
     <th>Стоимость</th>
     <th>Статус занятости</th>
-<!--    <th>Идентификатор справочной комнаты</th>-->
+    <th>Идентификатор справочной комнаты</th>
     <th>Действия</th>
   </tr>
   <tr th:each="bookedRoom : ${bookedRooms}">
     <td th:text="${bookedRoom.id}"></td>
     <td th:text="${bookedRoom.capacity}"></td>
     <td th:text="${bookedRoom.cost}"></td>
-    <td th:text="${bookedRoom.occupation_status}"></td>
-<!--    <td th:text="${bookedRoom.getReference_room_id()}"></td>-->
+    <td th:text="${bookedRoom.occupationStatus}"></td>
+    <td th:text="${bookedRoom.referenceRoom.getId()}"></td>
     <td>
-      <a th:href="@{/booked_rooms/edit/{id}(id=${bookedRoom.id})}" class="button">Редактировать</a>
-      <a th:href="@{/booked_rooms/delete/{id}(id=${bookedRoom.id})}" class="button">Удалить</a>
+      <a th:href="@{/booked_rooms/edit/{id}(id=${bookedRoom.getId()})}" class="button">Редактировать</a>
+      <a th:href="@{/booked_rooms/delete/{id}(id=${bookedRoom.getId()})}" class="button">Удалить</a>
     </td>
   </tr>
 </table>
