@@ -64,8 +64,10 @@
     <td th:text="${bookedRoom.occupationStatus}"></td>
     <td th:text="${bookedRoom.referenceRoom.getId()}"></td>
     <td>
-      <a th:href="@{/booked_rooms/edit/{id}(id=${bookedRoom.getId()})}" class="button">Редактировать</a>
-      <a th:href="@{/booked_rooms/delete/{id}(id=${bookedRoom.getId()})}" class="button">Удалить</a>
+      <a th:href="@{/booked_rooms/edit/{id}(id=${bookedRoom.getId()})}">Редактировать</a>
+      <form th:action="@{/booked_rooms/delete/{id}(id=${bookedRoom.getId()})}" method="POST">
+        <button type="submit">Удалить</button>
+      </form>
     </td>
   </tr>
 </table>
