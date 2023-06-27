@@ -3,6 +3,8 @@ package com.example.campus_proj.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -24,4 +26,8 @@ public class Guest {
     private String middleName;
     @Column(columnDefinition = "INTEGER", name = "guest_bill")
     private Integer guestBill;
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.REMOVE)
+    private List<GuestBooking> guestBookings;
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.REMOVE)
+    private List<Feedback> feedbacks;
 }

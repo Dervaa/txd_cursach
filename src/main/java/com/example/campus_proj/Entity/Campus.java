@@ -3,6 +3,8 @@ package com.example.campus_proj.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,4 +23,6 @@ public class Campus {
     private Integer campusRooms;
     @Column(columnDefinition = "INTEGER", name = "campus_floors")
     private Integer campusFloors;
+    @OneToMany(mappedBy = "campus", cascade = CascadeType.REMOVE)
+    private List<Floor> floors;
 }

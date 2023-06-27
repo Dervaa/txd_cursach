@@ -30,4 +30,8 @@ public class Booking {
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "guest_id", referencedColumnName = "guest_id", foreignKey = @ForeignKey(name = "guest_id"))
     private Guest guest;
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.REMOVE)
+    private List<GuestBooking> guestBookings;
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.REMOVE)
+    private List<OrganisationBooking> organisationBookings;
 }

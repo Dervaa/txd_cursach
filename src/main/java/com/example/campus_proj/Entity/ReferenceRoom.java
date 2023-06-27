@@ -3,6 +3,8 @@ package com.example.campus_proj.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -25,4 +27,6 @@ public class ReferenceRoom {
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "floor_id", referencedColumnName = "floor_id", foreignKey = @ForeignKey(name = "floor_id"))
     private Floor floor;
+    @OneToMany(mappedBy = "reference_room", cascade = CascadeType.REMOVE)
+    private List<BookedRoom> bookedRooms;
 }
