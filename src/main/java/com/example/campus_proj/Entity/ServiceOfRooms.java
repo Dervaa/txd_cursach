@@ -16,9 +16,9 @@ public class ServiceOfRooms {
     @Id
     private Long id;
     @Column (columnDefinition = "TEXT", name= "service_of_rooms_name")
-    private String service_name;
+    private String serviceName;
     @Column (columnDefinition = "INTEGER", name= "service_of_rooms_cost")
-    private Integer service_cost;
+    private Integer serviceCost;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "booked_room_id", referencedColumnName = "booked_room_id", foreignKey = @ForeignKey(name = "booked_room_id"))
     private BookedRoom BookedRoom;
