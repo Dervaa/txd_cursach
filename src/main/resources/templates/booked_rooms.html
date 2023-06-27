@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Забронированные комнаты</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    /* Добавьте стили оформления таблицы и кнопок здесь */
+    @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+    body {
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+
+    tr:nth-child(even) {
+      background-color: #F2F2F2;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #000000;
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-right: 8px;
+      margin-bottom: 16px; /* Увеличенное расстояние между кнопкой и таблицей */
+    }
+
+    .button:hover {
+      background-color: #333333;
+    }
+  </style>
+</head>
+<body>
+<h1>Забронированные комнаты</h1>
+<a href="/rooms/create" class="button">Создать</a>
+<table>
+  <tr>
+    <th>Идентификатор</th>
+    <th>Вместимость</th>
+    <th>Стоимость</th>
+    <th>Статус занятости</th>
+<!--    <th>Идентификатор справочной комнаты</th>-->
+    <th>Действия</th>
+  </tr>
+  <tr th:each="bookedRoom : ${bookedRooms}">
+    <td th:text="${bookedRoom.id}"></td>
+    <td th:text="${bookedRoom.capacity}"></td>
+    <td th:text="${bookedRoom.cost}"></td>
+    <td th:text="${bookedRoom.occupation_status}"></td>
+<!--    <td th:text="${bookedRoom.getReference_room_id()}"></td>-->
+    <td>
+      <a th:href="@{/booked_rooms/edit/{id}(id=${bookedRoom.id})}" class="button">Редактировать</a>
+      <a th:href="@{/booked_rooms/delete/{id}(id=${bookedRoom.id})}" class="button">Удалить</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

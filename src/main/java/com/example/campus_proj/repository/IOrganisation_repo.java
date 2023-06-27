@@ -4,6 +4,6 @@ import com.example.campus_proj.Entity.Organisation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IOrganisation_repo extends JpaRepository<Organisation, Long> {
-    Organisation findFirstByName(String name);
-    Organisation findFirstByAmount(Integer amount_of_people);
+/*    Organisation findFirstByName(String name);
+    Organisation findFirstByAmount(Integer amount_of_people);*/
 }

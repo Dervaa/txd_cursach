@@ -21,12 +21,15 @@ public class Organisation_booking_Service {
     public Organisation_booking_Service(IOrganisation_booking_repo organisationBookingRepo) {
         this.organisationBookingRepo = organisationBookingRepo;
     }
+
     @Autowired
     private Organisation_Service organisationService;
+
     @Autowired
     private Booking_Service bookingService;
+
     @Async
-    public List<Organisation_Booking> getAllFeedbacks() {
+    public List<Organisation_Booking> getAllOrganisations_Bookings() {
         return organisationBookingRepo.findAll();
     }
 
@@ -42,15 +45,15 @@ public class Organisation_booking_Service {
     public void create(Organisation_Booking organisationBooking) {
         organisationBookingRepo.save(organisationBooking);
     }
-    public void update(Organisation_Booking organisationBooking) {
+
+   /* public void update(Organisation_Booking organisationBooking) {
         Optional<Organisation_Booking> optionalOrganisationBooking = getById(organisationBooking.getId());
-        Optional<Organisation> optionalOrganisation = organisationService.getByOrganisationName(organisationBooking.getOrganisation().getName());
-        optionalOrganisation = organisationService.getByAmount(organisationBooking.getOrganisation().getAmount_of_people());
+        Optional<Organisation> optionalOrganisationByName = organisationService.getByOrganisationName(organisationBooking.getOrganisation().getName());
+        Optional<Organisation> optionalOrganisationByAmount = organisationService.getByAmount(organisationBooking.getOrganisation().getAmount_of_people());
         Optional<Booking> optionalBooking = bookingService.getById(organisationBooking.getBooking().getId());
 
-        Optional<Organisation> finalOptionalOrganisation = optionalOrganisation;
         optionalOrganisationBooking.ifPresent(existingOrganisationBooking -> {
-            finalOptionalOrganisation.ifPresent(existingOrganisation -> {
+            optionalOrganisationByName.ifPresent(existingOrganisation -> {
                 existingOrganisationBooking.setOrganisation(existingOrganisation);
             });
 
@@ -60,7 +63,19 @@ public class Organisation_booking_Service {
 
             organisationBookingRepo.save(existingOrganisationBooking);
         });
-    }
-    //надеюсь багов нет, а так закончено
+    }*/
+   public void update(Organisation_Booking organisationBooking) {
+       Optional<Organisation_Booking> optionalOrganisationBooking = getById(organisationBooking.getId());
+
+       optionalOrganisationBooking.ifPresent(existingOrganisationBooking -> {
+           existingOrganisationBooking.setOrganisation(organisationBooking.getOrganisation());
+           existingOrganisationBooking.setBooking(organisationBooking.getBooking());
+           organisationBookingRepo.save(existingOrganisationBooking);
+       });
+   }
 }
+
+    //update не работает пизде
+
+
 

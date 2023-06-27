@@ -1,6 +1,8 @@
 package com.example.campus_proj.controller;
 import com.example.campus_proj.Entity.Booked_room;
+import com.example.campus_proj.Entity.Reference_room;
 import com.example.campus_proj.Service.Booked_Rooms_Service;
+import com.example.campus_proj.Service.Reference_room_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,34 +12,42 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/rooms")
+@RequestMapping("/booked_rooms")
 public class BookedRoomController {
     @Autowired
-    private final Booked_Rooms_Service roomsService;
+     Booked_Rooms_Service bookedRoomsService;
+    @Autowired
+    Reference_room_Service referenceRoomService;
 
     @Autowired
     public BookedRoomController(Booked_Rooms_Service bookedRoomsService) {
-        this.roomsService = bookedRoomsService;
+        this.bookedRoomsService = bookedRoomsService;
     }
 
-    @GetMapping
+    /*@GetMapping
     public String getAlltheBookedRooms(Model model) {
-        List<Booked_room> bookedRooms = roomsService.getAllBookedRooms();
+        List<Booked_room> bookedRooms = bookedRoomsService.getAllBookedRooms();
         model.addAttribute("bookedRooms", bookedRooms);
-        return "rooms";
+        return "booked_rooms";
+    }*/
+    @GetMapping
+    public String getAll(Model model) {
+        model.addAttribute("bookedRooms", bookedRoomsService.getAllBookedRooms());
+        model.addAttribute("referenceRooms", referenceRoomService.getAllReferenceRooms());
+        return "booked_rooms";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("booked_rooms/delete/{id}")
     public String deleteBooked_roomById(@PathVariable Long id) {
-        roomsService.deleteBookedRoomById(id);
-        return "redirect:/rooms";
+        bookedRoomsService.deleteBookedRoomById(id);
+        return "redirect:/booked_rooms";
     }
     @GetMapping("/edit/{id}")
     public String editBooked_roomById(@PathVariable Long id, Model model)
     {
-        Optional<Booked_room> booked_room = roomsService.getById(id);
+        Optional<Booked_room> booked_room = bookedRoomsService.getById(id);
         model.addAttribute("booked_room", booked_room);
-        return "edit";
+        return "booked_rooms";
     }
     @PostMapping("/edit/{id}")
     public String editBooked_roomById(@PathVariable Long id,
@@ -45,9 +55,9 @@ public class BookedRoomController {
                                       @RequestParam("cost") Integer cost,
                                       @RequestParam("occupationStatus") boolean occupation_status, Model model)
     {
-        Optional<Booked_room> booked_room = roomsService.getById(id);
+        Optional<Booked_room> booked_room = bookedRoomsService.getById(id);
         model.addAttribute("booked_room", booked_room);
-        return "edit";
+        return "booked_rooms";
     }
 }
 

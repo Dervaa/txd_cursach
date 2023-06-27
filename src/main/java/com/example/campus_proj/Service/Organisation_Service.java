@@ -47,11 +47,11 @@ public class Organisation_Service {
             existingOrganisation.setOrg_bill(organisation.getOrg_bill());
         });
     }
-    public Optional<Organisation> getByOrganisationName(String name){
+    /*public Optional<Organisation> getByOrganisationName(String name){
         return Optional.ofNullable(organisationRepo.findFirstByName(name));
     }
     public Optional<Organisation> getByAmount(Integer amount_of_people){
         return Optional.ofNullable(organisationRepo.findFirstByAmount(amount_of_people));
-    }
+    }*/
 }
 
