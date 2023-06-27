@@ -3,7 +3,6 @@ package com.example.campus_proj.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,7 +10,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table(name = "service_of_rooms")
-public class Service_of_rooms {
+public class ServiceOfRooms {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "BIGSERIAL", name = "service_of_rooms_id")
     @Id
@@ -21,7 +20,6 @@ public class Service_of_rooms {
     @Column (columnDefinition = "INTEGER", name= "service_of_rooms_cost")
     private Integer service_cost;
     @ManyToOne
-    @JoinColumn(columnDefinition = "BIGSERIAL", name = "booked_room_id", referencedColumnName = "booked_room_id", foreignKey = @ForeignKey(name = "fk_id_genre"))
-    private Booked_room booked_room_id;
-
+    @JoinColumn(columnDefinition = "BIGSERIAL", name = "booked_room_id", referencedColumnName = "booked_room_id", foreignKey = @ForeignKey(name = "booked_room_id"))
+    private BookedRoom BookedRoom;
 }

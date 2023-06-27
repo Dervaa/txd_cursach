@@ -19,10 +19,10 @@ public class Floor {
     @Column(columnDefinition = "INTEGER", name = "floor_number")
     private Integer number;
     @Column(columnDefinition = "INTEGER", name = "floor_rooms")
-    private Integer floor_rooms;
+    private Integer floorRooms;
         @Column(columnDefinition = "INTEGER", name = "floor_rooms_occupied")
-    private Integer occupied_amount;
+    private Integer occupiedAmount;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "campus_id", referencedColumnName = "campus_id", foreignKey = @ForeignKey(name = "campus_id"))
-    private Campus campus_id;
+    private Campus campus;
 }

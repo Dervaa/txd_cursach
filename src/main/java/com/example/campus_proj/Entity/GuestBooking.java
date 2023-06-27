@@ -1,4 +1,5 @@
 package com.example.campus_proj.Entity;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,17 +10,16 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "organisation_booking")
-public class Organisation_Booking {
+@Table(name = "guest_booking")
+public class GuestBooking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "BIGSERIAL", name = "organisation_booking_id")
+    @Column(columnDefinition = "BIGSERIAL", name = "guest_booking_id")
     @Id
     private Long id;
     @ManyToOne
-    @JoinColumn(columnDefinition = "BIGSERIAL", name = "organisation_id", referencedColumnName = "organisation_id", foreignKey = @ForeignKey(name = "organisation_id"))
-    private Organisation organisation;
+    @JoinColumn(columnDefinition = "BIGSERIAL", name = "guest_guest_id", referencedColumnName = "guest_id", foreignKey = @ForeignKey(name = "guest_guest_id"))
+    private Guest guest;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "booking_booking_id", referencedColumnName = "booking_id", foreignKey = @ForeignKey(name = "booking_booking_id"))
     private Booking booking;
 }
-

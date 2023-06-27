@@ -17,9 +17,9 @@ public class Campus {
     @Id
     private Long id;
     @Column(columnDefinition = "TEXT", name = "campus_class")
-    private String campus_class;
+    private String campusClass;
     @Column(columnDefinition = "INTEGER", name = "campus_rooms")
-    private Integer campus_rooms;
+    private Integer campusRooms;
     @Column(columnDefinition = "INTEGER", name = "campus_floors")
-    private Integer campus_floors;
+    private Integer campusFloors;
 }

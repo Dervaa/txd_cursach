@@ -17,11 +17,11 @@ public class Guest {
     @Id
     private Long id;
     @Column(columnDefinition = "TEXT", name = "guest_last_name")
-    private String last_name;
+    private String lastName;
     @Column(columnDefinition = "TEXT", name = "guest_first_name")
-    private String first_name;
+    private String firstName;
     @Column(columnDefinition = "TEXT", name = "guest_middle_name")
-    private String middle_name;
+    private String middleName;
     @Column(columnDefinition = "INTEGER", name = "guest_bill")
-    private Integer guest_bill;
+    private Integer guestBill;
 }

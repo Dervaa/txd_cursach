@@ -19,7 +19,7 @@ public class Organisation {
     @Column(columnDefinition = "TEXT", name = "organisation_name")
     private String name;
     @Column(columnDefinition = "INTEGER", name = "organisation_amount_of_people")
-    private Integer amount_of_people;
+    private Integer amountOfPeople;
     @Column(columnDefinition = "INTEGER", name = "organisation_bill")
-    private Integer org_bill;
+    private Integer orgBill;
 }

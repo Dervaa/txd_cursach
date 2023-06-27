@@ -26,9 +26,8 @@ public class Booking {
     private String bill;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "organisation_id", referencedColumnName = "organisation_id", foreignKey = @ForeignKey(name = "organisation_id"))
-    private Organisation org_id;
+    private Organisation organisation;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "guest_id", referencedColumnName = "guest_id", foreignKey = @ForeignKey(name = "guest_id"))
-    private Guest guest_id;
-
+    private Guest guest;
 }

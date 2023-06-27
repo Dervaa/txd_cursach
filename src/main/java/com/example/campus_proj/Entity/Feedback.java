@@ -24,8 +24,8 @@ public class Feedback {
     private String text;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "guest_id", referencedColumnName = "guest_id", foreignKey = @ForeignKey(name = "guest_id"))
-    private Guest guest_id;
+    private Guest guest;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "booked_room_id", referencedColumnName = "booked_room_id", foreignKey = @ForeignKey(name = "booked_room_id"))
-    private Booked_room booked_room_id;
+    private BookedRoom bookedRoom;
 }
