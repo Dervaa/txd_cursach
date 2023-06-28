@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Music Shop - Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+<div id="content">
+  <h1>Music Shop</h1>
+  <h2>Editor</h2>
+  <form th:action="@{/guest_booking/edit/{id}(id=${guestBooking.id})}" th:object="${guestBooking}" method="POST">
+    <table>
+      <tr>
+        <input type="hidden" th:field="*{id}"/>
+      </tr>
+      <tr>
+        <td>Guest:</td>
+        <td>
+          <select name="guest" id="guest">
+            <option th:each="guest : ${guests}"
+                    th:value="${guest.id}"
+                    th:text="${guest.id}"
+                    th:selected="${guestBooking != null && guestBooking.guest != null && guest.id == guestBooking.guest.getId()}"></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Booking:</td>
+        <td>
+          <select name="booking" id="booking">
+            <option th:each="booking : ${bookings}"
+                    th:value="${booking.id}"
+                    th:text="${booking.id}"
+                    th:selected="${guestBooking != null && guestBooking.booking != null && guestBooking.id == guestBooking.booking.getId()}"></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>ID:</td>
+        <td><input type="text" th:field="*{id}" id="indexNumber"/></td>
+      </tr>
+      <td colspan="2">
+        <button type="submit">Сохранить</button>
+      </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>
