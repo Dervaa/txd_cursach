@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            flatpickr("#releaseDate", {
+                dateFormat: "Y-m-d",
+                enableTime: false
+            });
+
+            flatpickr("#duration", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i:S",
+                time_24hr: true,
+                enableSeconds: true,
+                minuteIncrement: 1,
+                secondIncrement: 1
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="content">
+    <h1>Отель</h1>
+    <h2>Редактирование забронированных комнат</h2>
+    <form th:action="@{/booked_rooms/edit/{id}(id=${bookedRoom.id})}" th:object="${bookedRoom}" method="POST">
+        <table>
+            <tr>
+                <input type="hidden" th:field="*{id}"/>
+            </tr>
+            <tr>
+                <td>Местность:</td>
+                <td><input type="number" th:field="*{capacity}" id="capacity"/></td>
+            </tr>
+            <tr>
+                <td>Стоимость:</td>
+                <td><input type="text" th:field="*{cost}" id="cost"/></td>
+            </tr>
+            <tr>
+                <td>Статус:</td>
+                <td><input type="text" th:field="*{occupationStatus}" id="occupationStatus"/></td>
+            </tr>
+            <tr>
+                <td>Ref ID:</td>
+                <td>
+                    <select name="referenceRoom" id="referenceRoom">
+                        <option th:each="referenceRoom : ${referenceRooms}"
+                                th:value="${referenceRoom.id}"
+                                th:text="${referenceRoom.id}"
+                                th:selected="${bookedRoom != null && bookedRoom.referenceRoom != null && referenceRoom.id eq bookedRoom.referenceRoom.getId()}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Сохранить</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
