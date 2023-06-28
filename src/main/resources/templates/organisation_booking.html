@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div id="menu">
+    <ul>
+      <li><a href="/booked_rooms">Забронированные комнаты</a></li>
+      <li><a href="/reference_room">Прайс-лист</a></li>
+      <li><a href="/booking">Бронирования</a></li>
+      <li><a href="/campus">Корпусы</a></li>
+      <li><a href="/feedback">Отзывы</a></li>
+      <li><a href="/floor">Этажи</a></li>
+      <li><a href="/guest_booking">Гость.Бронирование</a></li>
+      <li><a href="/guest">Гости</a></li>
+      <li><a href="/organisation_booking">Организация.Бронирование</a></li>
+      <li><a href="/organisation">Организации</a></li>
+      <li><a href="/service_of_rooms">Обслуживание номеров</a></li>
+      <li><a href="/sql-query">SQL Query</a></li>
+    </ul>
+  </div>
+  <meta charset="UTF-8">
+  <title>Организация.Бронирование</title>
+  <!--<link rel="stylesheet" type="text/css" href="booked_rooms.css">-->
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+    body {
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+
+    tr:nth-child(even) {
+      background-color: #F2F2F2;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #000000;
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-right: 8px;
+      margin-bottom: 16px; /* Увеличенное расстояние между кнопкой и таблицей */
+    }
+
+    .button:hover {
+      background-color: #333333;
+
+    }
+  </style>
+</head>
+<body>
+<h1>Организация.Бронирование</h1>
+<button class="add-button" onclick="openForm()">Создать</button>
+<table>
+  <tr>
+    <th>Идентификатор</th>
+    <th>Идентификатор организации</th>
+    <th>Идентификатор бронирования</th>
+    <th>Действия</th>
+  </tr>
+  <tr th:each="organisationbooking : ${organisationbookings}">
+    <td th:text="${organisationbooking.id}"></td>
+    <td th:text="${organisationbooking.organisation.getId()}"></td>
+    <td th:text="${organisationbooking.booking.getId()}"></td>
+    <td>
+      <a th:href="@{/organisationbooking/edit/{id}(id=${organisationbooking.getId()})}">Редактировать</a>
+      <form th:action="@{/organisationbooking/delete/{id}(id=${organisationbooking.getId()})}" method="POST">
+        <button type="submit">Удалить</button>
+      </form>
+    </td>
+  </tr>
+</table>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm()">&times;</span>
+    <h2>Добавить Организация.Бронирование</h2>
+    <form th:action="@{/organisationbooking/create}" method="POST">
+      <table>
+        <tr>
+          <td>Идентификатор организации:</td>
+          <td>
+            <select name="organisation" id="organisation">
+              <option th:each="organisation : ${organisations}"
+                      th:value="${organisation.id}"
+                      th:text="${organisation.id}"
+                      th:selected="${organisationbooking != null && organisationbooking.organisation != null && organisation.id == organisationbooking.organisation.getId()}"></option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Идентификатор бронирования:</td>
+          <td>
+            <select name="booking" id="booking">
+              <option th:each="booking : ${bookings}"
+                      th:value="${booking.id}"
+                      th:text="${booking.id}"
+                      th:selected="${guestBooking != null && guestBooking.booking != null && booking.id == guestBooking.booking.getId()}"></option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit">Create</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+<script>
+  function openForm() {
+    document.getElementById("myModal").style.display = "block";
+  }
+  function closeForm() {
+    document.getElementById("myModal").style.display = "none";
+  }
+</script>
+</body>
+</html>
