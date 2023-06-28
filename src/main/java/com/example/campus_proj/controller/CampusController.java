@@ -45,7 +45,7 @@ public class CampusController {
         return "editCampus";
     }
     @PostMapping("/edit/{id}")
-    public String editBooking(@ModelAttribute Campus campus) {
+    public String editCampus(@ModelAttribute Campus campus) {
         campusService.update(campus);
         return "redirect:/campus";
     }
