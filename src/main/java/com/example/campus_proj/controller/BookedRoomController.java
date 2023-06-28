@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/booked_rooms")
 public class BookedRoomController {
@@ -44,14 +42,14 @@ public class BookedRoomController {
         return "redirect:/booked_rooms";
     }
     @GetMapping("/edit/{id}")
-    public String getSong(@PathVariable("id") Long id, Model model) {
+    public String getBookedRoom(@PathVariable("id") Long id, Model model) {
         BookedRoom bookedRoom = bookedRoomsService.getById(id);
         model.addAttribute("bookedRoom", bookedRoom);
         model.addAttribute("referenceRooms", referenceRoomService.getAll());
         return "editBookedRoom";
     }
     @PostMapping("/edit/{id}")
-    public String editSong(@ModelAttribute BookedRoom bookedRoom) {
+    public String editBookedRoom(@ModelAttribute BookedRoom bookedRoom) {
         bookedRoomsService.update(bookedRoom);
         return "redirect:/booked_rooms";
     }
