@@ -80,7 +80,7 @@
     <td th:text="${organisation.orgBill}"></td>
     <td>
       <a th:href="@{/organisation/edit/{id}(id=${organisation.getId()})}">Редактировать</a>
-      <form th:action="@{/organisation/delete/{id}(id=${gueorganisationst.getId()})}" method="POST">
+      <form th:action="@{/organisation/delete/{id}(id=${organisation.getId()})}" method="POST">
         <button type="submit">Удалить</button>
       </form>
     </td>

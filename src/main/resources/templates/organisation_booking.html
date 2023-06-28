@@ -72,13 +72,13 @@
     <th>Идентификатор бронирования</th>
     <th>Действия</th>
   </tr>
-  <tr th:each="organisationbooking : ${organisationbookings}">
-    <td th:text="${organisationbooking.id}"></td>
-    <td th:text="${organisationbooking.organisation.getId()}"></td>
-    <td th:text="${organisationbooking.booking.getId()}"></td>
+  <tr th:each="organisationBooking : ${organisationBookings}">
+    <td th:text="${organisationBooking.id}"></td>
+    <td th:text="${organisationBooking.organisation.getId()}"></td>
+    <td th:text="${organisationBooking.booking.getId()}"></td>
     <td>
-      <a th:href="@{/organisationbooking/edit/{id}(id=${organisationbooking.getId()})}">Редактировать</a>
-      <form th:action="@{/organisationbooking/delete/{id}(id=${organisationbooking.getId()})}" method="POST">
+      <a th:href="@{/organisation_booking/edit/{id}(id=${organisationBooking.getId()})}">Редактировать</a>
+      <form th:action="@{/organisation_booking/delete/{id}(id=${organisationBooking.getId()})}" method="POST">
         <button type="submit">Удалить</button>
       </form>
     </td>
@@ -88,7 +88,7 @@
   <div class="modal-content">
     <span class="close" onclick="closeForm()">&times;</span>
     <h2>Добавить Организация.Бронирование</h2>
-    <form th:action="@{/organisationbooking/create}" method="POST">
+    <form th:action="@{/organisation_booking/create}" method="POST">
       <table>
         <tr>
           <td>Идентификатор организации:</td>

@@ -22,14 +22,14 @@ public class OrganisationBookingController {
         model.addAttribute("organisationBookings", organisationBookingService.getAll());
         model.addAttribute("organisations", organisationService.getAll());
         model.addAttribute("bookings", bookingService.getAll());
-        return "organisationBookings_booking";
+        return "organisation_booking";
     }
 
     @GetMapping("/{id}")
     public String getById(@PathVariable("id") Long id, Model model) {
         OrganisationBooking organisationBooking = organisationBookingService.getById(id);
         model.addAttribute("organisationBooking", organisationBooking);
-        return "organisationBooking-details";
+        return "organisation_booking-details";
     }
 
     @PostMapping("/create")

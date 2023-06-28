@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактирование</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/forms.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      flatpickr("#releaseDate", {
+        dateFormat: "Y-m-d",
+        enableTime: false
+      });
+
+      flatpickr("#duration", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i:S",
+        time_24hr: true,
+        enableSeconds: true,
+        minuteIncrement: 1,
+        secondIncrement: 1
+      });
+    });
+  </script>
+</head>
+<body>
+<div id="content">
+  <h1>Отель</h1>
+  <h2>Редактирование броней</h2>
+  <form th:action="@{/booking/edit/{id}(id=${booking.id})}" th:object="${booking}" method="POST">
+    <table>
+      <tr>
+        <input type="hidden" th:field="*{id}"/>
+      </tr>
+      <tr>
+        <td>Дата начала:</td>
+        <td><input type="text" th:field="*{begin}" id="begin"/></td>
+      </tr>
+      <tr>
+        <td>Дата конца:</td>
+        <td><input type="text" th:field="*{end}" id="end"/></td>
+      </tr>
+      <tr>
+        <td>Счет:</td>
+        <td><input type="number" th:field="*{bill}" id="bill"/></td>
+      </tr>
+      <tr>
+        <td>Ref ID:</td>
+        <td>
+          <select name="guest" id="guest">
+            <option th:each="guest : ${guests}"
+                    th:value="${guest.id}"
+                    th:text="${guest.id}"
+                    th:selected="${booking != null && booking.guest != null && guest.id eq booking.guest.getId()}"></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Ref ID2:</td>
+        <td>
+          <select name="organisation" id="organisation">
+            <option th:each="organisation : ${organisations}"
+                    th:value="${organisation.id}"
+                    th:text="${organisation.id}"
+                    th:selected="${booking != null && booking.organisation != null && organisation.id eq booking.organisation.getId()}"></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="submit">Сохранить</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

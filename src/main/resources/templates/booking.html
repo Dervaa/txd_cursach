@@ -118,6 +118,8 @@
                       th:selected="${booking != null && booking.guest != null && guest.id == booking.guest.getId()}"></option>
             </select>
           </td>
+        </tr>
+        <tr>
           <td>Идентификатор организации:</td>
           <td>
             <select name="organisation" id="organisation">
@@ -127,7 +129,6 @@
                       th:selected="${booking != null && booking.organisation != null && organisation.id == booking.organisation.getId()}"></option>
             </select>
           </td>
-
         </tr>
         <tr>
           <td colspan="2">

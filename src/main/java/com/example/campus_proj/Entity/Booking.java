@@ -23,7 +23,7 @@ public class Booking {
     @Column(columnDefinition = "TEXT", name = "booking_end")
     private String end;
     @Column(columnDefinition = "INTEGER", name = "booking_bill")
-    private String bill;
+    private Integer bill;
     @ManyToOne
     @JoinColumn(columnDefinition = "BIGSERIAL", name = "organisation_id", referencedColumnName = "organisation_id", foreignKey = @ForeignKey(name = "organisation_id"))
     private Organisation organisation;

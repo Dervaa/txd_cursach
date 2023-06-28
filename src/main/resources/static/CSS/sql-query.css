@@ -1,6 +1,6 @@
 /* Общие стили */
 body {
-    font-family: 'Bebas Neue', Arial, sans-serif;
+    font-family: 'Press Start 2P', serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
@@ -12,7 +12,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #333;
+    background-color: #000000;
     padding: 10px;
     text-align: center;
 }
@@ -62,7 +62,7 @@ textarea[name="sqlQuery"] {
     width: 90%;
     padding: 10px;
     font-size: 16px;
-    font-family: 'Bebas Neue', Arial, sans-serif;
+    font-family: 'Montserrat SemiBold', serif;
     resize: none;
     margin: 0 auto;
     display: block;
@@ -75,7 +75,7 @@ input[type="submit"] {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    font-family: 'Bebas Neue', Arial, sans-serif;
+    font-family: 'Press Start 2P', serif;
     margin: 0 auto;
     display: block;
 }
